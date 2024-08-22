@@ -1,4 +1,4 @@
-package participant;
+package com.suelengalhardo.planner.participant;
 
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,7 @@
 package com.suelengalhardo.planner.trip;
 
+import java.util.UUID;
 
-
-public class TripCreateResponse {
-
+public record TripCreateResponse(UUID tripId) {
 
 }
