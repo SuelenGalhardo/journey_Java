@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.suelengalhardo.planner.participant.ParticipantService;
 
 @RestController
@@ -33,8 +34,7 @@ public class TripController {
         Trip newTrip = new Trip(payload);
 
         this.repository.save(newTrip);
-        this.participantService.registerParticipantsToEvent(payload.emails_to_invite(), newTrip.getId());
-
+        this.participantService.registerParticipantsToEvent(payload.emails_to_invite(), newTrip);
         return ResponseEntity.ok(new TripCreateResponse(newTrip.getId()));
 
     }
