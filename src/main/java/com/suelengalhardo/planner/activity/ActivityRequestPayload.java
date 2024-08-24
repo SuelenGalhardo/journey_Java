@@ -1,4 +1,4 @@
-package com.suelengalhardo.planner.activities;
+package com.suelengalhardo.planner.activity;
 
 public record ActivityRequestPayload(String title, String occurs_at) {
 }

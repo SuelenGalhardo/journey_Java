@@ -1,4 +1,4 @@
-package com.suelengalhardo.planner.activities;
+package com.suelengalhardo.planner.activity;
 
 import com.suelengalhardo.planner.trip.Trip;
 import jakarta.persistence.*;
