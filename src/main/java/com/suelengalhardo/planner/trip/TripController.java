@@ -23,6 +23,11 @@ import com.suelengalhardo.planner.participant.ParticipantCreateResponse;
 import com.suelengalhardo.planner.participant.ParticipantData;
 import com.suelengalhardo.planner.participant.ParticipantService;
 
+import com.suelengalhardo.planner.activities.ActivityRequestPayload;
+import com.suelengalhardo.planner.activities.ActivityResponse;
+import com.suelengalhardo.planner.activities.ActivityService;
+
+
 
 
 
@@ -36,6 +41,11 @@ public class TripController {
 
     @Autowired
     private TripRepository repository;
+
+    @Autowired
+    private ActivityService activityService;
+
+
 
     @PostMapping
     public ResponseEntity<TripCreateResponse> createTrip(@RequestBody TripRequestPayload payload) {
@@ -109,6 +119,22 @@ public class TripController {
         return ResponseEntity.notFound().build();
 
     }
+    //Activity
+    @PostMapping("/{id}/activities")
+    public ResponseEntity<ActivityResponse> registerActivity(@PathVariable UUID id, @RequestBody ActivityRequestPayload payload) {
+
+        Optional<Trip> trip = this.repository.findById(id);
+
+        if(trip.isPresent()){
+            Trip rawTrip = trip.get();
+
+            ActivityResponse activityResponse = this.activityService.registerActivity(payload, rawTrip);
+
+            return ResponseEntity.ok(activityResponse);
+        }
+        return ResponseEntity.notFound().build();
+
+    }
 
     @GetMapping("/{id}/participants")
     public ResponseEntity<List<ParticipantData>> getAllParticipants(@PathVariable UUID id){
@@ -116,4 +142,5 @@ public class TripController {
 
         return ResponseEntity.ok(participantList);
     }
+
 }
