@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter;
 
 import java.util.Optional;
 import java.util.UUID;
+import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.suelengalhardo.planner.participant.ParticipantRequestPayload;
 import com.suelengalhardo.planner.participant.ParticipantCreateResponse;
+import com.suelengalhardo.planner.participant.ParticipantData;
 import com.suelengalhardo.planner.participant.ParticipantService;
 
 
@@ -107,5 +110,10 @@ public class TripController {
 
     }
 
+    @GetMapping("/{id}/participants")
+    public ResponseEntity<List<ParticipantData>> getAllParticipants(@PathVariable UUID id){
+        List<ParticipantData> participantList = this.participantService.getAllParticipantsFromEvent(id);
 
+        return ResponseEntity.ok(participantList);
+    }
 }
