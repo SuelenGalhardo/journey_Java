@@ -11,3 +11,22 @@ https://start.spring.io/
 
 
 https://insomnia.rest/download
+
+
+in progress: 
+## Funciones adicionales
+
+- [] Agregar validación en los campos de fecha
+- [ ] La fecha de inicio del viaje es menor que la fecha de finalización del viaje
+- [ ] La fecha de una actividad está entre las fechas de viaje.
+
+**Ejemplo:**
+Viaje entre el 20 y 25 de julio en Río de Janeiro
+
+⇒ Actividad 19 de julio
+
+⇒ Actividad 21 de julio
+
+- [ ] Extracción (core das trips ) para una clase de Servicio
+- [] Mapeo de excepciones en nuestra aplicación.
+- [] Con manejo de errores personalizado

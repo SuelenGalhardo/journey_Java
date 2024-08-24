@@ -8,7 +8,7 @@ import java.util.UUID;
 import java.util.List;
 
 
-
+import com.suelengalhardo.planner.link.LinkData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -179,6 +179,12 @@ public class TripController {
         }
         return ResponseEntity.notFound().build();
 
+    }
+    @GetMapping("/{id}/links")
+    public ResponseEntity<List<LinkData>> getAllLinks(@PathVariable UUID id){
+        List<LinkData> linkDataList = this.linkService.getAllLinksFromTrip(id);
+
+        return ResponseEntity.ok(linkDataList);
     }
 
 }
